@@ -23,32 +23,25 @@ public class CreateNoteWhenDoTest {
         createNoteForm.noteTextBox.setText(note);
         createNoteForm.saveButton.click();
         //Verificacion Assert
-        Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
+        //   Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
 
-    }
-    public void verifyUpdateNote() {
+    //}
+    //public void verifyUpdateTitle(){
+        String title1= "nueva";
 
-        String title = "Cato Update";
-        String note = "Esta es una nota";
-
-        mainScreen.addNoteButton.click();
-        createNoteForm.titleTextBox.setText(title);
-        createNoteForm.noteTextBox.setText(note);
+        createNoteForm.updateTextBox.click();
+        createNoteForm.titleTextBox.setText(title1);
         createNoteForm.saveButton.click();
-        //Verificacion Assert
-        Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
+      //  Assertions.assertTrue(mainScreen.isNotDisplayed(title1),"Error!! no se actualizo");
+    //}
 
+    //public void deleteItem(){
+        createNoteForm.updateTextBox.click();
+        createNoteForm.deleteButton.click();
+        createNoteForm.sureButton.click();
+        Assertions.assertTrue(mainScreen.isNotDisplayed(""),"Error! no se elimino el item");
     }
-    public void verifyDeleteNote() {
 
-
-        mainScreen.addNoteButton.click();
-        createNoteForm.titleTextBox.click();
-        createNoteForm.saveButton.click();
-        //Verificacion Assert
-        Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
-
-    }
      @AfterEach
      public void closeApp(){
             Session.getInstance().closeApp();
