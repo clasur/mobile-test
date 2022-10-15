@@ -20,7 +20,29 @@ public class WhenDoTest {
 
     @Test
     public void verifyCreateNewNote() {
+        createNewNote();
+    }
 
+    @Test
+    public void verifyUpdateForm(){
+        createNewNote();
+        updateNoteForm();
+    }
+
+    @Test
+    public void deleteItem(){
+        createNewNote();
+        updateNoteForm();
+        deleteNote();
+
+    }
+
+    @AfterEach
+    public void closeApp(){
+            Session.getInstance().closeApp();
+    }
+
+    private void createNewNote(){
         mainScreen.addNoteButton.click();
         createNoteForm.titleTextBox.setText(title);
         createNoteForm.noteTextBox.setText(note);
@@ -29,28 +51,19 @@ public class WhenDoTest {
         Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
     }
 
-    @Test
-    public void verifyUpdateForm(){
-
-
+    private void updateNoteForm(){
         updateNoteForm.updateTextBox.click();
         String textBefore = createNoteForm.titleTextBox.getText();
         createNoteForm.titleTextBox.setText(textBefore + title1);
         createNoteForm.saveButton.click();
         Assertions.assertTrue(mainScreen.isNotDisplayed(textBefore + title1),"Error!! no se actualizo");
     }
-
-    @Test
-    public void deleteItem(){
-        String textBefore = createNoteForm.titleTextBox.getText();
+    private void deleteNote(){
         updateNoteForm.updateTextBox.click();
+        String textBefore = createNoteForm.titleTextBox.getText();
         deleteNoteForm.deleteButton.click();
         deleteNoteForm.sureButton.click();
         Assertions.assertFalse(mainScreen.isNotDisplayed(textBefore),"Error! no se elimino el item");
     }
 
-     @AfterEach
-     public void closeApp(){
-            Session.getInstance().closeApp();
-        }
 }
