@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cleanTest.CreateNoteWhenDoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-15T16:59:02" hostname="DESKTOP-URGKKC5" time="31.422">
+<testsuite name="testMain.WhenDoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-15T19:09:46" hostname="DESKTOP-URGKKC5" time="19.191">
   <properties/>
-  <testcase name="verifyCreateNewNote()" classname="cleanTest.CreateNoteWhenDoTest" time="31.422"/>
+  <testcase name="verifyCreateNewNote()" classname="testMain.WhenDoTest" time="19.191"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation

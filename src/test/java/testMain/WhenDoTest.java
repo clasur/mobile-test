@@ -1,14 +1,13 @@
-package cleanTest;
+package testMain;
 
 import activity.whendo.CreateNoteForm;
 import activity.whendo.MainScreen;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import singletonSession.Session;
 
-public class CreateNoteWhenDoTest {
+public class WhenDoTest {
     MainScreen mainScreen= new MainScreen();
     CreateNoteForm createNoteForm = new CreateNoteForm();
 
