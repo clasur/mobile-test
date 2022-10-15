@@ -1,7 +1,9 @@
 package testMain;
 
 import activity.whendo.CreateNoteForm;
+import activity.whendo.DeleteNoteForm;
 import activity.whendo.MainScreen;
+import activity.whendo.UpdateNoteForm;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,12 +12,14 @@ import singletonSession.Session;
 public class WhenDoTest {
     MainScreen mainScreen= new MainScreen();
     CreateNoteForm createNoteForm = new CreateNoteForm();
+    UpdateNoteForm updateNoteForm = new UpdateNoteForm();
+    DeleteNoteForm deleteNoteForm = new DeleteNoteForm();
+    String title = "University";
+    String note = "This is a new note";
+    String title1= ",now updated";
 
     @Test
     public void verifyCreateNewNote() {
-
-        String title = "Cato";
-        String note = "Esta es una nota";
 
         mainScreen.addNoteButton.click();
         createNoteForm.titleTextBox.setText(title);
@@ -26,21 +30,23 @@ public class WhenDoTest {
     }
 
     @Test
-    public void verifyUpdateTitle(){
-        String title1= "nueva";
+    public void verifyUpdateForm(){
 
-        createNoteForm.updateTextBox.click();
-        createNoteForm.titleTextBox.setText(title1);
+
+        updateNoteForm.updateTextBox.click();
+        String textBefore = createNoteForm.titleTextBox.getText();
+        createNoteForm.titleTextBox.setText(textBefore + title1);
         createNoteForm.saveButton.click();
-        Assertions.assertTrue(mainScreen.isNotDisplayed(title1),"Error!! no se actualizo");
+        Assertions.assertTrue(mainScreen.isNotDisplayed(textBefore + title1),"Error!! no se actualizo");
     }
 
     @Test
     public void deleteItem(){
-        createNoteForm.updateTextBox.click();
-        createNoteForm.deleteButton.click();
-        createNoteForm.sureButton.click();
-        Assertions.assertTrue(mainScreen.isNotDisplayed(""),"Error! no se elimino el item");
+        String textBefore = createNoteForm.titleTextBox.getText();
+        updateNoteForm.updateTextBox.click();
+        deleteNoteForm.deleteButton.click();
+        deleteNoteForm.sureButton.click();
+        Assertions.assertFalse(mainScreen.isNotDisplayed(textBefore),"Error! no se elimino el item");
     }
 
      @AfterEach
