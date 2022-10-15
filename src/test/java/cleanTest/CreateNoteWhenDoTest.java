@@ -23,19 +23,21 @@ public class CreateNoteWhenDoTest {
         createNoteForm.noteTextBox.setText(note);
         createNoteForm.saveButton.click();
         //Verificacion Assert
-        //   Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
+        Assertions.assertTrue(mainScreen.isNotDisplayed(title), "Error!! la nota no fue creada");
+    }
 
-    //}
-    //public void verifyUpdateTitle(){
+    @Test
+    public void verifyUpdateTitle(){
         String title1= "nueva";
 
         createNoteForm.updateTextBox.click();
         createNoteForm.titleTextBox.setText(title1);
         createNoteForm.saveButton.click();
-      //  Assertions.assertTrue(mainScreen.isNotDisplayed(title1),"Error!! no se actualizo");
-    //}
+        Assertions.assertTrue(mainScreen.isNotDisplayed(title1),"Error!! no se actualizo");
+    }
 
-    //public void deleteItem(){
+    @Test
+    public void deleteItem(){
         createNoteForm.updateTextBox.click();
         createNoteForm.deleteButton.click();
         createNoteForm.sureButton.click();
